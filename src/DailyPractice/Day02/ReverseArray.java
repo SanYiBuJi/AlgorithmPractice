@@ -37,8 +37,8 @@ public class ReverseArray {
         while (j <= r){
             tempArray[index++] = array[j++];
         }
-        for (int k = 0; k < tempArray.length; k++) {
-            array[l++] = tempArray[k];
+        for (int value : tempArray) {
+            array[l++] = value;
         }
         return count;
     }

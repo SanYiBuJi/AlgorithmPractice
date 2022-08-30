@@ -1,33 +1,34 @@
 package IntroductionToAlgorithms.chapter7;
 
-import java.util.Random;
-import java.util.concurrent.Exchanger;
+/**
+ * 修改QuickSort，使得他可以非递增序进行排序
+ */
+public class QuickSort7_1_4 implements QuickSort{
 
-public class QuickStorRandomNumberOptimize implements QuickSort{
     @Override
     public void quickSort(int[] array, int l, int r) {
         if (l < r){
             int temp = Partition(array,l,r);
-            quickSort(array,l,temp-1);
+            quickSort(array,l,temp - 1);
             quickSort(array,temp+1,r);
         }
     }
 
     @Override
     public int Partition(int[] array, int l, int r) {
-        int rc = (int)( l + Math.random() * (r - l + 1));
-        Exchange(array,r,rc);
+        if (l == r){
+            return l;
+        }
         int i = l - 1;
+        int j = l;
         int x = array[r];
-
-        for (int j = l; j < r; j++) {
+        for (;j < r;j++){
             if (array[j] > x){
                 i++;
                 Exchange(array,i,j);
             }
         }
-        Exchange(array,i+1,r);
-
+        Exchange(array,i + 1,r);
         return i + 1;
     }
 
